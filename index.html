@@ -6,9 +6,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
     <style>
+        img {
+            max-width: 100%;
+        }
         .image-container {
             padding: 10px;
+            position: relative;
+        }
+        .get-image-url {
+            position: absolute;
+            top:10px;
+            right: 10px;
         }
      </style>
 
@@ -16,33 +26,46 @@
 <body>
 <div class="container">
     <div class="row">
-        <h1>Free Images for VR </h1>
+        <div class="pull-right col-lg-2 col-md-2">
+            <a href="https://twitter.com/anilbms75?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @anilbms75</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+    <div class="row">
+        <h1>Free Panorama Images for VR </h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-8">
             <div class="row image-container">
-                <a href="images/paris.jpeg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <button class="get-image-url btn btn-primary" data-clipboard-text="Paris"> Get image URL</button>
+                <a href="images/paris.jpeg" data-toggle="lightbox" data-gallery="example-gallery" >
                     <img src="images/paris-thumbnail.jpeg" class="img-fluid">
                 </a>
+                <button class="get-image-url btn btn-primary" data-clipboard-text="https://anilkk.github.io/360degreeassetsforVR/images/paris-thumbnail.jpeg"> copy image URL</button>
             </div>
             <div class="row image-container">
-                <a href="images/city.jpeg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <a href="images/city.jpeg" data-toggle="lightbox" data-gallery="example-gallery" >
                     <img src="images/city-thumbnail.jpeg" class="img-fluid">
                 </a>
+                <button class="get-image-url btn btn-primary" data-clipboard-text="https://anilkk.github.io/360degreeassetsforVR/images/city.jpeg"> Copy image URL</button>
             </div>
             <div class="row image-container">
-                <a href="images/forest.jpeg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <a href="images/forest.jpeg" data-toggle="lightbox" data-gallery="example-gallery" >
                     <img src="images/forest-thumbnail.jpeg" class="img-fluid">
                 </a>
+                <button class="get-image-url btn btn-primary" data-clipboard-text="https://anilkk.github.io/360degreeassetsforVR/images/forest.jpeg"> copy image URL</button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
+    $(document).ready(function () {
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+
+        new Clipboard('.get-image-url');
     });
 </script>
 
